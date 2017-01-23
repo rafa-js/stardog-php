@@ -1,0 +1,29 @@
+{
+    "name": "rafa0809/stardog-php",
+    "description": "A Stardog client for PHP",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["stadog", "ontology", "sparql","turlt","php"],
+    "authors": [
+        {
+            "name": "Rafa Jimenez Seibane",
+            "email": "rjseibane@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "StardogPhp\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    },
+    "config": {
+        "platform": {
+            "php": "5.5.9"
+        }
+    }
+}
