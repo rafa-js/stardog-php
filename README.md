@@ -1,7 +1,4 @@
 # stardog-php
 A Stardog client for PHP
 
-Status Progress
---------------------------
-            0%
---------------------------
+Working in progress...
