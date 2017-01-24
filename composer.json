@@ -1,8 +1,9 @@
 {
   "name": "rafa0809/stardog-php",
+  "version": "0.1.0",
+  "minimum-stability": "stable",
   "description": "A Stardog client for PHP",
   "type": "library",
-  "version": "0.1.0",
   "license": "MIT",
   "keywords": [
     "stadog",
