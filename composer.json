@@ -2,6 +2,7 @@
   "name": "rafa0809/stardog-php",
   "description": "A Stardog client for PHP",
   "type": "library",
+  "version": "0.1.0-dev",
   "license": "MIT",
   "keywords": [
     "stadog",
@@ -27,8 +28,7 @@
     }
   },
   "require": {
-    "php": ">=5.5.9",
-    "jakeasmith/http_build_url" : "^1"
+    "php": ">=5.5.9"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.8"
