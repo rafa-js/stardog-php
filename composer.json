@@ -37,11 +37,5 @@
     "platform": {
       "php": "5.5.9"
     }
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/rafa0809/stardog-php"
-    }
-  ]
+  }
 }
