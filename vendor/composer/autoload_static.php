@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitc37fa21b7c186d93a24fd614cae50612
 {
+    public static $files = array (
+        'b45b351e6b6f7487d819961fef2fda77' => __DIR__ . '/..' . '/jakeasmith/http_build_url/src/http_build_url.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'p' => 
         array (
@@ -14,6 +18,10 @@ class ComposerStaticInitc37fa21b7c186d93a24fd614cae50612
         'W' => 
         array (
             'Webmozart\\Assert\\' => 17,
+        ),
+        'T' => 
+        array (
+            'Tests\\' => 6,
         ),
         'S' => 
         array (
@@ -36,6 +44,10 @@ class ComposerStaticInitc37fa21b7c186d93a24fd614cae50612
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'Tests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/tests',
         ),
         'Symfony\\Component\\Yaml\\' => 
         array (
