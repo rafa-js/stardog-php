@@ -1,7 +1,6 @@
 {
   "name": "rafa0809/stardog-php",
   "version": "0.1.0",
-  "minimum-stability": "stable",
   "description": "A Stardog client for PHP",
   "type": "library",
   "license": "MIT",
@@ -37,6 +36,11 @@
   "config": {
     "platform": {
       "php": "5.5.9"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1.0-dev"
     }
   }
 }
