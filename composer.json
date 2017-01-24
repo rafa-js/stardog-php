@@ -2,7 +2,7 @@
   "name": "rafa0809/stardog-php",
   "description": "A Stardog client for PHP",
   "type": "library",
-  "version": "0.1.0-dev",
+  "version": "0.1.0",
   "license": "MIT",
   "keywords": [
     "stadog",
