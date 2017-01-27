@@ -4,7 +4,7 @@ namespace Tests\StardohPhp\Sparql;
 
 use DataSourceBundle\Components\Normalize\LanguageNormalizer;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
-use StardogPhp\Sparql\UpdateBuilder;
+use StardogPhp\Sparql\QueryBuilder;
 use StardogPhp\Stardog\Stardog;
 use StardogPhp\Stardog\StardogBuilder;
 
@@ -21,7 +21,7 @@ class UpdateBuilderTest extends \PHPUnit_Framework_TestCase
             "INSERT {" . PHP_EOL .
             "\t<http://www.w3.org/People/Berners-Lee/> foaf:name \"Tim Berners Lee\"" . PHP_EOL .
             "}" . PHP_EOL;
-        $query = UpdateBuilder::create()
+        $query = QueryBuilder::create()
             ->addPrefix( "foaf", "http://http://xmlns.com/foaf/0.1/" )
             ->addInsert( "http://www.w3.org/People/Berners-Lee/", "foaf:name", "Tim Berners Lee" )
             ->buildSparqlUpdate();
@@ -38,7 +38,7 @@ class UpdateBuilderTest extends \PHPUnit_Framework_TestCase
             "DELETE {" . PHP_EOL .
             "\t<http://www.w3.org/People/Berners-Lee/> ?p ?v" . PHP_EOL .
             "}" . PHP_EOL;
-        $query = UpdateBuilder::create()
+        $query = QueryBuilder::create()
             ->addPrefix( "foaf", "http://http://xmlns.com/foaf/0.1/" )
             ->addDelete( "http://www.w3.org/People/Berners-Lee/", "?p", "?v" )
             ->buildSparqlUpdate();
@@ -58,7 +58,7 @@ class UpdateBuilderTest extends \PHPUnit_Framework_TestCase
             "WHERE {" . PHP_EOL .
             "\t?s foaf:name \"John Lennon\"" . PHP_EOL .
             "}" . PHP_EOL;
-        $query = UpdateBuilder::create()
+        $query = QueryBuilder::create()
             ->addPrefix( "foaf", "http://http://xmlns.com/foaf/0.1/" )
             ->addInsert( "?s", "foaf:friend", "http://www.w3.org/People/Berners-Lee/" )
             ->addWhere( "?s", "foaf:name", "John Lennon" )
@@ -79,7 +79,7 @@ class UpdateBuilderTest extends \PHPUnit_Framework_TestCase
             "WHERE {" . PHP_EOL .
             "\t?s foaf:name \"John Lennon\"" . PHP_EOL .
             "}" . PHP_EOL;
-        $query = UpdateBuilder::create()
+        $query = QueryBuilder::create()
             ->addPrefix( "foaf", "http://http://xmlns.com/foaf/0.1/" )
             ->addDelete( "?s", "?p", "?v" )
             ->addWhere( "?s", "foaf:name", "John Lennon" )
@@ -103,7 +103,7 @@ class UpdateBuilderTest extends \PHPUnit_Framework_TestCase
             "WHERE {" . PHP_EOL .
             "\t?s foaf:name \"John Lennon\"" . PHP_EOL .
             "}" . PHP_EOL;
-        $query = UpdateBuilder::create()
+        $query = QueryBuilder::create()
             ->addPrefix( "foaf", "http://http://xmlns.com/foaf/0.1/" )
             ->addDelete( "?s", "foaf:name", "?name" )
             ->addInsert( "?s", "foaf:name", "J. Lennon" )

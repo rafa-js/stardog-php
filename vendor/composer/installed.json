@@ -1080,17 +1080,17 @@
     },
     {
         "name": "phpunit/phpunit",
-        "version": "4.8.32",
-        "version_normalized": "4.8.32.0",
+        "version": "4.8.34",
+        "version_normalized": "4.8.34.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/phpunit.git",
-            "reference": "f5e1941a8dacf0d904753ff2895c6f68e54bcee1"
+            "reference": "7eb45205d27edd94bd2b3614085ea158bd1e2bca"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f5e1941a8dacf0d904753ff2895c6f68e54bcee1",
-            "reference": "f5e1941a8dacf0d904753ff2895c6f68e54bcee1",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7eb45205d27edd94bd2b3614085ea158bd1e2bca",
+            "reference": "7eb45205d27edd94bd2b3614085ea158bd1e2bca",
             "shasum": ""
         },
         "require": {
@@ -1117,7 +1117,7 @@
         "suggest": {
             "phpunit/php-invoker": "~1.1"
         },
-        "time": "2017-01-22T08:37:05+00:00",
+        "time": "2017-01-26T16:15:36+00:00",
         "bin": [
             "phpunit"
         ],
@@ -1151,43 +1151,5 @@
             "testing",
             "xunit"
         ]
-    },
-    {
-        "name": "jakeasmith/http_build_url",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/jakeasmith/http_build_url.git",
-            "reference": "15bdd686e5178ddfa3e88de60fa585adffb292bb"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/jakeasmith/http_build_url/zipball/15bdd686e5178ddfa3e88de60fa585adffb292bb",
-            "reference": "15bdd686e5178ddfa3e88de60fa585adffb292bb",
-            "shasum": ""
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~3.7"
-        },
-        "time": "2015-05-06T12:27:20+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/http_build_url.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jake A. Smith",
-                "email": "theman@jakeasmith.com"
-            }
-        ],
-        "description": "Provides functionality for http_build_url() to environments without pecl_http."
     }
 ]

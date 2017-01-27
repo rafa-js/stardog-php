@@ -2,7 +2,7 @@
 
 namespace StardogPhp\Sparql;
 
-class UpdateBuilder
+class QueryBuilder
 {
 
     const DEFAULT_PREFIXES = array(
@@ -12,12 +12,13 @@ class UpdateBuilder
 
     private $prefixes;
     private $deletes;
+    private $select;
     private $inserts;
     private $wheres;
 
     public static function create()
     {
-        return new UpdateBuilder();
+        return new QueryBuilder();
     }
 
     public function __construct()
@@ -46,6 +47,12 @@ class UpdateBuilder
         return $this;
     }
 
+    public function addSelect(array $items)
+    {
+        $this->select = $items;
+        return $this;
+    }
+
     public function addWhere($subject, $predicate, $value)
     {
         $this->wheres[] = array($subject, $predicate, $value);
@@ -61,25 +68,29 @@ class UpdateBuilder
                 $sparql .= "PREFIX $prefix: $namespace" . PHP_EOL;
             }
         }
-        if ( count( $this->deletes ) > 0 ) {
-            $sparql .= (count( $this->wheres ) > 0 ? 'DELETE {' : 'DELETE DATA {') . PHP_EOL;
-            foreach ( $this->deletes as $triple ) {
-                $subject = $this->normalizeSubject( $triple[ 0 ] );
-                $predicate = $triple[ 1 ];
-                $value = $this->normalizeValue( $triple[ 2 ] );
-                $sparql .= "\t$subject $predicate $value ." . PHP_EOL;
+        if ( empty(!$this->select) ) {
+            $sparql .= "SELECT " . implode( ' ', $this->select ) . PHP_EOL;
+        } else {
+            if ( count( $this->deletes ) > 0 ) {
+                $sparql .= (count( $this->wheres ) > 0 ? 'DELETE {' : 'DELETE DATA {') . PHP_EOL;
+                foreach ( $this->deletes as $triple ) {
+                    $subject = $this->normalizeSubject( $triple[ 0 ] );
+                    $predicate = $triple[ 1 ];
+                    $value = $this->normalizeValue( $triple[ 2 ] );
+                    $sparql .= "\t$subject $predicate $value ." . PHP_EOL;
+                }
+                $sparql .= '}' . PHP_EOL;
             }
-            $sparql .= '}' . PHP_EOL;
-        }
-        if ( count( $this->inserts ) > 0 ) {
-            $sparql .= (count( $this->wheres ) > 0 ? 'INSERT {' : 'INSERT DATA {') . PHP_EOL;
-            foreach ( $this->inserts as $triple ) {
-                $subject = $this->normalizeSubject( $triple[ 0 ] );
-                $predicate = $triple[ 1 ];
-                $value = $this->normalizeValue( $triple[ 2 ] );
-                $sparql .= "\t$subject $predicate $value ." . PHP_EOL;
+            if ( count( $this->inserts ) > 0 ) {
+                $sparql .= (count( $this->wheres ) > 0 ? 'INSERT {' : 'INSERT DATA {') . PHP_EOL;
+                foreach ( $this->inserts as $triple ) {
+                    $subject = $this->normalizeSubject( $triple[ 0 ] );
+                    $predicate = $triple[ 1 ];
+                    $value = $this->normalizeValue( $triple[ 2 ] );
+                    $sparql .= "\t$subject $predicate $value ." . PHP_EOL;
+                }
+                $sparql .= '}' . PHP_EOL;
             }
-            $sparql .= '}' . PHP_EOL;
         }
         if ( count( $this->wheres ) > 0 ) {
             $sparql .= 'WHERE {' . PHP_EOL;

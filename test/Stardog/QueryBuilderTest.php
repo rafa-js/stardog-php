@@ -4,11 +4,11 @@ namespace Tests\StardohPhp\Stardog;
 
 use DataSourceBundle\Components\Normalize\LanguageNormalizer;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
-use StardogPhp\Sparql\UpdateBuilder;
+use StardogPhp\Sparql\QueryBuilder;
 use StardogPhp\Stardog\Stardog;
 use StardogPhp\Stardog\StardogBuilder;
 
-class TransactionTest extends \PHPUnit_Framework_TestCase
+class QueryBuilderTest extends \PHPUnit_Framework_TestCase
 {
 
     const SERVER = 'http://localhost';
@@ -64,10 +64,18 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
 
     public function testUpdate()
     {
-        $update = UpdateBuilder::create()
+        $update = QueryBuilder::create()
             ->addPrefix( "foaf", "http://http://xmlns.com/foaf/0.1/" )
             ->addWhere( "?s", "?p", "?v" )
             ->addDelete( "http://www.w3.org/People/Berners-Lee/", "?p", "?v" );
+        $this->stardog->update( static::DB, $update );
+    }
+
+    public function testSelect()
+    {
+        $update = QueryBuilder::create()
+            ->addSelect( array('?s', '?p', '?v') )
+            ->addWhere( "?s", "?p", "?v" );
         $this->stardog->update( static::DB, $update );
     }
 

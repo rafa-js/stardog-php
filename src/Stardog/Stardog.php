@@ -6,7 +6,7 @@ namespace StardogPhp\Stardog;
 
 use StardogPhp\Request\CurlRequestPerformer;
 use StardogPhp\Request\Request;
-use StardogPhp\Sparql\UpdateBuilder;
+use StardogPhp\Sparql\QueryBuilder;
 
 class Stardog
 {
@@ -54,7 +54,7 @@ class Stardog
 
     /**
      * @param $db
-     * @param $update UpdateBuilder
+     * @param $update QueryBuilder
      * @return TransactionFluent
      * @throws \Exception
      */
