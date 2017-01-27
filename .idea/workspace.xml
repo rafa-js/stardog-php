@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="46158918-8894-4a86-994c-4f4ab9f0c601" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Sparql/QueryBuilder.php" afterPath="$PROJECT_DIR$/src/Sparql/QueryBuilder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Stardog/Stardog.php" afterPath="$PROJECT_DIR$/src/Stardog/Stardog.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/Sparql/UpdateBuilderTest.php" afterPath="$PROJECT_DIR$/test/Sparql/UpdateBuilderTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/Stardog/QueryBuilderTest.php" afterPath="$PROJECT_DIR$/test/Stardog/QueryBuilderTest.php" />
     </list>
     <ignored path="stardog-php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,21 +25,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="composer.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.051813472">
+            <state vertical-scroll-proportion="-1.25">
               <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QueryBuilder.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="QueryBuilder.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Sparql/QueryBuilder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-55.625">
-              <caret line="89" column="54" selection-start-line="89" selection-start-column="54" selection-end-line="89" selection-end-column="54" />
+            <state vertical-scroll-proportion="-0.761658">
+              <caret line="112" column="58" selection-start-line="112" selection-start-column="58" selection-end-line="112" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -88,10 +84,10 @@
         <option value="$PROJECT_DIR$/src/Request/CurlRequestPerformer.php" />
         <option value="$PROJECT_DIR$/src/Sparql/UpdateBuilder.php" />
         <option value="$PROJECT_DIR$/test/Stardog/TransactionTest.php" />
-        <option value="$PROJECT_DIR$/src/Sparql/QueryBuilder.php" />
         <option value="$PROJECT_DIR$/test/Sparql/UpdateBuilderTest.php" />
         <option value="$PROJECT_DIR$/test/Stardog/QueryBuilderTest.php" />
         <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/src/Sparql/QueryBuilder.php" />
       </list>
     </option>
   </component>
@@ -478,14 +474,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Sparql/QueryBuilder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-55.625">
-          <caret line="89" column="54" selection-start-line="89" selection-start-column="54" selection-end-line="89" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/Stardog/QueryBuilderTest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.875">
@@ -498,8 +486,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.051813472">
+        <state vertical-scroll-proportion="-1.25">
           <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sparql/QueryBuilder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.761658">
+          <caret line="112" column="58" selection-start-line="112" selection-start-column="58" selection-end-line="112" selection-end-column="58" />
           <folding />
         </state>
       </provider>
