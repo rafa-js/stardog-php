@@ -1,6 +1,6 @@
 {
   "name": "rafa0809/stardog-php",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Stardog client for PHP",
   "type": "library",
   "license": "MIT",
