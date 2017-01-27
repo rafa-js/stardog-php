@@ -29,6 +29,15 @@ class StardogEndpointFactory
      * @param $db string
      * @return string
      */
+    public function getUpdateEndpoint($db)
+    {
+        return "$this->baseUrl/$db/update";
+    }
+
+    /**
+     * @param $db string
+     * @return string
+     */
     public function getBeginTransactionEndpoint($db)
     {
         return "$this->baseUrl/$db/transaction/begin";

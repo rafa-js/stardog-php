@@ -6,6 +6,7 @@ namespace StardogPhp\Stardog;
 
 use StardogPhp\Request\CurlRequestPerformer;
 use StardogPhp\Request\Request;
+use StardogPhp\Sparql\UpdateBuilder;
 
 class Stardog
 {
@@ -49,6 +50,24 @@ class Stardog
         }
         $transactionId = $response->getContent();
         return new TransactionFluent( $transactionId, $db, $this->requestPerformer, $this->endpointFactory );
+    }
+
+    /**
+     * @param $db
+     * @param $update UpdateBuilder
+     * @return TransactionFluent
+     * @throws \Exception
+     */
+    public function update($db, $update)
+    {
+        $url = $this->endpointFactory->getUpdateEndpoint( $db );
+        $request = new Request( 'POST', $url );
+        $request->addHeader( 'Content-Type: application/sparql-update' );
+        $request->setBody( $update->buildSparqlUpdate() );
+        $response = $this->requestPerformer->performRequest( $request );
+        if ( !$response->isSuccess() ) {
+            throw new \Exception( 'Exception in update transaction: ' . $response );
+        }
     }
 
 

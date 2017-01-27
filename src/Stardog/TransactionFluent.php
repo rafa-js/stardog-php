@@ -75,7 +75,6 @@ class TransactionFluent
         if ( !$response->isSuccess() ) {
             throw new \Exception( 'Exception in commit transaction: ' . $response );
         }
-        return $this;
     }
 
     public function rollbackTransaction()

@@ -7,7 +7,7 @@ namespace StardogPhp\Request;
 class CurlRequestPerformer implements IRequestPerformer
 {
 
-    static $DEBUG = true;
+    static $DEBUG = false;
 
     private $accessToken;
 

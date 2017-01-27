@@ -4,6 +4,7 @@ namespace Tests\StardohPhp\Stardog;
 
 use DataSourceBundle\Components\Normalize\LanguageNormalizer;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
+use StardogPhp\Sparql\UpdateBuilder;
 use StardogPhp\Stardog\Stardog;
 use StardogPhp\Stardog\StardogBuilder;
 
@@ -59,6 +60,15 @@ class TransactionTest extends \PHPUnit_Framework_TestCase
             ->beginTransaction( static::DB )
             ->add( $turtleContent )
             ->commitTransaction();
+    }
+
+    public function testUpdate()
+    {
+        $update = UpdateBuilder::create()
+            ->addPrefix( "foaf", "http://http://xmlns.com/foaf/0.1/" )
+            ->addWhere( "?s", "?p", "?v" )
+            ->addDelete( "http://www.w3.org/People/Berners-Lee/", "?p", "?v" );
+        $this->stardog->update( static::DB, $update );
     }
 
 }
