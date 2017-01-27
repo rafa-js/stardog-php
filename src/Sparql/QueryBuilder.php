@@ -5,6 +5,8 @@ namespace StardogPhp\Sparql;
 class QueryBuilder
 {
 
+    const INDENT_LVL_1 = '   ';
+    const INDENT_LVL_2 = '      ';
     const DEFAULT_PREFIXES = array(
         'rdf' => 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
         'rdfs' => 'http://www.w3.org/2000/01/rdf-schema#'
@@ -15,6 +17,7 @@ class QueryBuilder
     private $select;
     private $inserts;
     private $wheres;
+    private $optionalWheres;
 
     public static function create()
     {
@@ -27,6 +30,7 @@ class QueryBuilder
         $this->deletes = array();
         $this->inserts = array();
         $this->wheres = array();
+        $this->optionalWheres = array();
     }
 
     public function addPrefix($prefix, $namespace)
@@ -59,7 +63,13 @@ class QueryBuilder
         return $this;
     }
 
-    public function buildSparqlUpdate()
+    public function addOptionalWhere($subject, $predicate, $value)
+    {
+        $this->optionalWheres[] = array($subject, $predicate, $value);
+        return $this;
+    }
+
+    public function buildSparqlQuery()
     {
         $sparql = '';
         if ( count( $this->prefixes ) > 0 ) {
@@ -77,7 +87,7 @@ class QueryBuilder
                     $subject = $this->normalizeSubject( $triple[ 0 ] );
                     $predicate = $triple[ 1 ];
                     $value = $this->normalizeValue( $triple[ 2 ] );
-                    $sparql .= "\t$subject $predicate $value ." . PHP_EOL;
+                    $sparql .= static::INDENT_LVL_1 . "$subject $predicate $value ." . PHP_EOL;
                 }
                 $sparql .= '}' . PHP_EOL;
             }
@@ -87,7 +97,7 @@ class QueryBuilder
                     $subject = $this->normalizeSubject( $triple[ 0 ] );
                     $predicate = $triple[ 1 ];
                     $value = $this->normalizeValue( $triple[ 2 ] );
-                    $sparql .= "\t$subject $predicate $value ." . PHP_EOL;
+                    $sparql .= static::INDENT_LVL_1 . "$subject $predicate $value ." . PHP_EOL;
                 }
                 $sparql .= '}' . PHP_EOL;
             }
@@ -98,7 +108,17 @@ class QueryBuilder
                 $subject = $this->normalizeSubject( $triple[ 0 ] );
                 $predicate = $triple[ 1 ];
                 $value = $this->normalizeValue( $triple[ 2 ] );
-                $sparql .= "\t$subject $predicate $value ." . PHP_EOL;
+                $sparql .= static::INDENT_LVL_1 . "$subject $predicate $value ." . PHP_EOL;
+            }
+            if ( count( $this->optionalWheres ) > 0 ) {
+                $sparql .= static::INDENT_LVL_1 . "OPTIONAL {" . PHP_EOL;
+                foreach ( $this->optionalWheres as $triple ) {
+                    $subject = $this->normalizeSubject( $triple[ 0 ] );
+                    $predicate = $triple[ 1 ];
+                    $value = $this->normalizeValue( $triple[ 2 ] );
+                    $sparql .= static::INDENT_LVL_2 . "$subject $predicate $value ." . PHP_EOL;
+                }
+                $sparql .= static::INDENT_LVL_1 . "}" . PHP_EOL;
             }
             $sparql .= '}' . PHP_EOL;
         }

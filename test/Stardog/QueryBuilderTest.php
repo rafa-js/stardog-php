@@ -2,8 +2,6 @@
 
 namespace Tests\StardohPhp\Stardog;
 
-use DataSourceBundle\Components\Normalize\LanguageNormalizer;
-use Liip\FunctionalTestBundle\Test\WebTestCase;
 use StardogPhp\Sparql\QueryBuilder;
 use StardogPhp\Stardog\Stardog;
 use StardogPhp\Stardog\StardogBuilder;
@@ -64,19 +62,28 @@ class QueryBuilderTest extends \PHPUnit_Framework_TestCase
 
     public function testUpdate()
     {
-        $update = QueryBuilder::create()
+        $query = QueryBuilder::create()
             ->addPrefix( "foaf", "http://http://xmlns.com/foaf/0.1/" )
             ->addWhere( "?s", "?p", "?v" )
             ->addDelete( "http://www.w3.org/People/Berners-Lee/", "?p", "?v" );
-        $this->stardog->update( static::DB, $update );
+        $this->stardog->update( static::DB, $query );
     }
 
     public function testSelect()
     {
-        $update = QueryBuilder::create()
+        $query = QueryBuilder::create()
             ->addSelect( array('?s', '?p', '?v') )
             ->addWhere( "?s", "?p", "?v" );
-        $this->stardog->update( static::DB, $update );
+        $this->stardog->update( static::DB, $query );
+    }
+
+    public function testSelectWhereOptional()
+    {
+        $query = QueryBuilder::create()
+            ->addSelect( array('?s', '?p', '?v') )
+            ->addWhere( "?s", "?p", "?v" )
+            ->addOptionalWhere( '?s', '?v', 'Name' );
+        $this->stardog->update( static::DB, $query );
     }
 
 }

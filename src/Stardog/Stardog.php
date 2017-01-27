@@ -63,7 +63,7 @@ class Stardog
         $url = $this->endpointFactory->getUpdateEndpoint( $db );
         $request = new Request( 'POST', $url );
         $request->addHeader( 'Content-Type: application/sparql-update' );
-        $request->setBody( $update->buildSparqlUpdate() );
+        $request->setBody( $update->buildSparqlQuery() );
         $response = $this->requestPerformer->performRequest( $request );
         if ( !$response->isSuccess() ) {
             throw new \Exception( 'Exception in update transaction: ' . $response );
